@@ -1,7 +1,7 @@
-from django.urls import path, include
-from .views import PostView
+from django.urls import path
+from blog import views
 
 urlpatterns = [
-    path('', PostView.as_view(), name='home'),  # Rota vazia para redirecionar para hello/
-    path('hello/', PostView.as_view(), name='hello_world'),
+    path("", views.PostView.as_view(), name="home"),
+    path("<slug:slug>/", views.PostDetail.as_view(), name="post_detail"),
 ]
